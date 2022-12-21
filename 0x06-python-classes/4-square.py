@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-""" Create an empty class called Square
+""" Creates an empty class called Square
 """
+
 
 class Square:
     """ Empty class with size private attribute
@@ -21,19 +22,19 @@ class Square:
         """
         Returns the area of the square
         """
-        return self.__size**2
+        return (self.__size * self.__size)
 
     @property
     def size(self):
         """
-        size getter. Returns size of a side
+        size getter. Handle size errors
         """
         return self.__size
 
     @size.setter
     def size(self, value):
         """
-        size setter. sets size of a side
+        size setter. Set the size square
         """
         if type(value) is not int:
             raise TypeError("size must be an integer")
