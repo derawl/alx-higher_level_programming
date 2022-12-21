@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-""" Create an empty class called Square
+""" Creates an empty class called Square
 """
+
 
 class Square:
     """ Empty class with size private attribute
@@ -19,6 +20,6 @@ class Square:
 
     def area(self):
         """
-               Returns the area of the square
+        Returns the area of the square
         """
-        return self.__size**2
+        return (self.__size * self.__size)
