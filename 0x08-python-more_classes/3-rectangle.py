@@ -100,4 +100,4 @@ class Rectangle:
         for i in range(self.height):
             rectangle_shape += ("#" * self.width) + "\n"
 
-        return rectangle_shape
+        return rectangle_shape[:-1]
