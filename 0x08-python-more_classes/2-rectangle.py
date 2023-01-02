@@ -70,17 +70,19 @@ class Rectangle:
         """method that returns the area of a rectangle
 
         Returns:
-            value of the area
+            rectangle area
+
         """
         return self.height * self.width
 
     def perimeter(self):
-        """method that returns the perimeter of a rectangle
+        """method that calculates the perimeter of a rectangle
 
         Returns:
-            value of the area
+            rectangle perimeter
+
         """
         if self.height == 0 or self.width == 0:
             return 0
         else:
-            return self.height * self.width
+            return (2 * self.height) + (2 * self.width)
