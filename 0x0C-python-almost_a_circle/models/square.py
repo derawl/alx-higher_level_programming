@@ -168,6 +168,8 @@ class Rectangle(Base):
             Returns:
                 the dictionary representation(repr) of a rectangle
         """
-        return {'x': getattr(self, "x"), 'y': getattr(self, "y"),
-                'id': getattr(self, "id"), 'height': getattr(self, "height"),
-                'width': getattr(self, "width")}
+        return {'id': getattr(self, "id"),
+                'width': getattr(self, "width"),
+                'height': getattr(self, "height"),
+                'x': getattr(self, "x"),
+                'y': getattr(self, "y")}
