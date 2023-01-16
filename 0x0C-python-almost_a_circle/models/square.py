@@ -32,7 +32,7 @@ class Square(Rectangle):
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
-        
+
         #sets the value to the same
         self.width = value
         self.height = value
@@ -66,3 +66,26 @@ class Square(Rectangle):
         return "[{}] ({}) {}/{} - {}".format(type(self).__name__,
                                              self.id, self.x, self.y,
                                              self.width)
+
+    def update(self, *args, **kwargs):
+        """
+            Assigns key/value argument to attributes
+            sets kwargs if args is empty
+            kwargs is skipped if args is not empty
+            Args:
+                *args -  variable number of non keyword args
+                **kwargs - variable number of keyword args
+        """
+        if len(args) == 0:
+            for key, val in kwargs.items():
+                self.__setattr__(key, val)
+            return
+
+        try:
+            self.id = args[0]
+            self.width = args[1]
+            self.height = args[2]
+            self.x = args[3]
+            self.y = args[4]
+        except IndexError:
+            pass
