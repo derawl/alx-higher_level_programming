@@ -1,150 +1,77 @@
 #!/usr/bin/python3
 """
-    Class Rectangle which implements Base.
+    contains class Square implements class Rectangle
 """
-from models.base import Base
+from models.rectangle import Rectangle
 
 
-class Rectangle(Base):
+class Square(Rectangle):
     """
-        Class Rectangle implements Base class.
-        Methods:
-        __init__()
+        Square implements rectangle
     """
-    def __init__(self, width, height, x=0, y=0, id=None):
+    def __init__(self, size, x=0, y=0, id=None):
         """
-            Initializes the instance of the class..
+            initialises Square (overrides Rectangle init)
         """
-        super().__init__(id)
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
+        super().__init__(size, size, x, y, id)
 
     @property
-    def width(self):
+    def size(self):
         """
-            getter function for __width
-            Returns: width
+        Returns:
+            the size of the square
         """
-        return self.__width
+        return self.width
 
-    @width.setter
-    def width(self, value):
+    @size.setter
+    def size(self, value):
         """
-            setter function for width.
-            Args:
-                value (int): value to be set.
+            Sets the value of size
         """
         if type(value) != int:
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
 
-        self.__width = value
+        #sets the value to the same
+        self.width = value
+        self.height = value
 
-    @property
-    def height(self):
+    def update(self, *args, **kwargs):
         """
-            getter function for height
-            Returns: height
+        Assigns key/value argument to attributes
+        sets kwargs if args is empty
+        sets args if is not empty
+        Args:
+            *args -  variable number of non keyword args
+            **kwargs - variable number of keyword args
         """
-        return self.__height
+        if len(args) == 0:
+            for key, val in kwargs.items():
+                self.__setattr__(key, val)
+            return
 
-    @height.setter
-    def height(self, value):
-        """
-            setter function for height
-            Args:
-                value (int): value to be set.
-        """
-        if type(value) != int:
-            raise TypeError("height must be an integer")
-        if value <= 0:
-            raise ValueError("height must be > 0")
-
-        self.__height = value
-
-    @property
-    def x(self):
-        """
-            getter function for x.
-            Returns: x
-        """
-        return self.__x
-
-    @x.setter
-    def x(self, value):
-        """
-            setter function for x.
-            Args:
-                value (int): value to be set.
-        """
-        if type(value) != int:
-            raise TypeError("x must be an integer")
-        if value < 0:
-            raise ValueError("x must be >= 0")
-
-        self.__x = value
-
-    @property
-    def y(self):
-        """
-            getter function for y
-            Returns: y
-        """
-        return self.__y
-
-    @y.setter
-    def y(self, value):
-        """
-            setter function for y
-            Args:
-                value (int): value to be set.
-        """
-        if type(value) != int:
-            raise TypeError("y must be an integer")
-        if value < 0:
-            raise ValueError("y must be >= 0")
-
-        self.__y = value
-
-    def area(self):
-        """
-        Returns:
-            returns the area of the Rectangle instance.
-        """
-        return (self.__width * self.__height)
-
-    def display(self):
-        """
-            method prints to STOUT the Rectangle instance with '#'
-        """
-        rectangle = ""
-        print_symbol = "#"
-
-        print("\n" * self.y, end="")
-
-        for i in range(self.height):
-            rectangle += (" " * self.x) + (print_symbol * self.width) + "\n"
-        print(rectangle, end="")
+        try:
+            self.id = args[0]
+            self.size = args[1]
+            self.x = args[2]
+            self.y = args[3]
+        except IndexError:
+            pass
 
     def __str__(self):
         """
-        overriders __str__
-        Returns:
-            a string formart of the rectangle
-
+            str function representation
         """
-        return "[{}] ({}) {}/{} - {}/{}".format(type(self).__name__, self.id,
-                                                self.__x, self.__y,
-                                                self.__width, self.__height)
+        return "[{}] ({}) {}/{} - {}".format(type(self).__name__,
+                                             self.id, self.x, self.y,
+                                             self.width)
 
     def update(self, *args, **kwargs):
         """
             Assigns key/value argument to attributes
             sets kwargs if args is empty
-            sets args if is not empty
+            kwargs is skipped if args is not empty
             Args:
                 *args -  variable number of non keyword args
                 **kwargs - variable number of keyword args
@@ -165,11 +92,9 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """
-            Returns:
-                the dictionary representation(repr) of a rectangle
+            Returns the dictionary representation of a Square
         """
         return {'id': getattr(self, "id"),
-                'width': getattr(self, "width"),
-                'height': getattr(self, "height"),
+                'size': getattr(self, "width"),
                 'x': getattr(self, "x"),
                 'y': getattr(self, "y")}
