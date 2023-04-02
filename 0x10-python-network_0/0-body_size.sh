@@ -1,3 +1,3 @@
 #!/bin/bash
-url=$1
+# echo a length of the requests body
 echo $(curl -sI "$url" | grep -i "Content-length" | awk '{print $2}')
