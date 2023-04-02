@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #echos the length of the response body
 
 url=$1
