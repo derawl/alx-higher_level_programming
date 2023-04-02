@@ -1,3 +1,3 @@
 #!/bin/bash
-size=$(curl -sI "$1" | grep -i "Content-length" | awk '{print $2}')
-echo $size
+url=$1
+echo $(curl -sI "$url" | grep -i "Content-length" | awk '{print $2}')
