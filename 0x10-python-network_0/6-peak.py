@@ -1,6 +1,7 @@
-'''
+#!/usr/bin/python3
+"""
 module finds the peak in a list
-'''
+"""
 
 def find_peak(list_of_integers):
     """
