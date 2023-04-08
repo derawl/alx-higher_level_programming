@@ -10,8 +10,7 @@ def find_peak(list_of_integers):
     high = len(list_of_integers) - 1
 
     while low < high:
-        mid = int((low + high) / 2)
-
+        mid = int((low + high) / 2) #find the middle of the list in absolute integer
         if(list_of_integers[mid] > list_of_integers[mid + 1]):
             high = mid
         else:
